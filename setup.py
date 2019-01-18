@@ -26,25 +26,26 @@ with open("README.md", 'r') as f:
     long_description = f.read()
 
 setup(
-   name='iconsdk',
-   version=version,
-   description='ICON SDK for Python is a collection of libraries which allow you to interact '
-               'with a local or remote Loopchain node, using an HTTP connection. ',
-   long_description=long_description,
-   long_description_content_type='text/markdown',
-   author='ICON foundation',
-   author_email='foo@icon.foundation',
-   url='https://github.com/icon-project/icon-sdk-python',
-   packages=find_packages(exclude=['tests*']),
-   test_suite='tests',
-   install_requires=[
+    name='iconsdk',
+    python_requires='>=3.6',
+    version=version,
+    description='ICON SDK for Python is a collection of libraries which allow you to interact '
+                'with a local or remote Loopchain node, using an HTTP connection. ',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    author='ICON foundation',
+    author_email='foo@icon.foundation',
+    url='https://github.com/icon-project/icon-sdk-python',
+    packages=find_packages(exclude=['tests*']),
+    test_suite='tests',
+    install_requires=[
         'eth-keyfile==0.5.1',
         'secp256k1==0.13.2',
         'multipledispatch==0.5.0',
         'requests>=2.20.0'
-   ],
-   license='Apache License 2.0',
-   classifiers=[
+    ],
+    license='Apache License 2.0',
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
@@ -52,5 +53,6 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6'
+        'Programming Language :: Python :: 3.7'
     ]
 )

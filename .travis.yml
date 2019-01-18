@@ -1,6 +1,7 @@
 language: python
 python:
 - "3.6"
+- "3.7"
 
 install:
 - git clone "https://oauth2:$Gitlab_token@repo.theloop.co.kr/icon/icon-sdk/icon-mock-node.git"
@@ -19,8 +20,8 @@ before_deploy:
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
-  #server: https://test.pypi.org/legacy/
+  server: https://test.pypi.org/legacy/
   user: iconfoundation
   password: $Pypi_pw
   on:
-    branch: master
+    branch: 28-issue-when-installing-iconsdk
