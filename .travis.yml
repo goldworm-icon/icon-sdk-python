@@ -18,7 +18,7 @@ before_deploy:
 
 deploy:
   provider: pypi
-  distributions: bdist_wheel
+  distributions: sdist bdist_wheel
   server: https://test.pypi.org/legacy/
   user: iconfoundation
   password: $Pypi_pw
