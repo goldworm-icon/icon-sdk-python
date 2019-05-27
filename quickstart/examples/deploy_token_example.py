@@ -17,7 +17,7 @@ from os import path
 from iconsdk.builder.call_builder import CallBuilder
 from iconsdk.builder.transaction_builder import DeployTransactionBuilder
 from iconsdk.exception import JSONRPCException
-from iconsdk.icon_service import IconService
+from iconsdk.icon_client import IconClient
 from iconsdk.libs.in_memory_zip import gen_deploy_data_content
 from iconsdk.providers.http_provider import HTTPProvider
 from iconsdk.signed_transaction import SignedTransaction
@@ -35,7 +35,7 @@ current_dir_path = path.abspath(path.dirname(__file__))
 score_path_standard_token = path.join(current_dir_path, 'sample_data/standard_token.zip')
 score_path_sample_token = path.join(current_dir_path, 'sample_data/sample_token.zip')
 score_paths = [score_path_sample_token, score_path_standard_token]
-icon_service = IconService(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
+icon_service = IconClient(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
 
 
 # Returns the max step limit

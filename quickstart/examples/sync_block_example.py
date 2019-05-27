@@ -15,14 +15,14 @@
 from time import sleep
 
 from iconsdk.builder.call_builder import CallBuilder
-from iconsdk.icon_service import IconService
+from iconsdk.icon_client import IconClient
 from iconsdk.providers.http_provider import HTTPProvider
 from iconsdk.utils.convert_type import convert_hex_str_to_int
 from iconsdk.wallet.wallet import KeyWallet
 from quickstart.examples.test.constant import TEST_HTTP_ENDPOINT_URI_V3
 from quickstart.examples.util.repeater import RepeatedTimer
 
-icon_service = IconService(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
+icon_service = IconClient(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
 wallet = KeyWallet.load("./test/test_keystore", "abcd1234*")
 
 

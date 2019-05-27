@@ -14,11 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+__all__ = "Dict"
+
 from collections.abc import MutableMapping
 from typing import Union
 import json
 
 from ..data.address import Address
+from .object import Object
+from .primitive import Primitive
 
 _VALUE_TYPES = (bool, int, bytes, str, Address, MutableMapping)
 
@@ -29,42 +33,27 @@ def _check_key_type(key: str):
 
 
 def _check_value_type(value: Union[bool, int, bytes, str, Address, MutableMapping]):
-    if not isinstance(value, _VALUE_TYPES):
-        raise TypeError("Invalid value")
+    if not isinstance(value, Object):
+        TypeError("Invalid type")
 
 
 class JsonRpcEncoder(json.JSONEncoder):
     def default(self, o):
-        if isinstance(o, (bool, int)):
-            return hex(o)
-        if isinstance(o, bytes):
-            return f"0x{o.hex()}"
-        if isinstance(o, Address):
+        if isinstance(o, Object):
             return str(o)
 
-        ValueError("Invalid value")
-
-    # def encode(self, o):
-    #     if isinstance(o, (bool, int)):
-    #         return hex(o)
-    #     if isinstance(o, bytes):
-    #         return f"0x{o.hex()}"
-    #     if isinstance(o, Address):
-    #         return str(o)
-    #     if isinstance(o, dict):
-    #         ret = super().encode(o)
-    #         return ret
+        return json.JSONEncoder.default(self, o)
 
 
 class Dict(dict):
     def __init__(self):
         super().__init__()
 
-    def __getitem__(self, key: str) -> Union[bool, int, bytes, str, Address, MutableMapping]:
+    def __getitem__(self, key: str):
         _check_key_type(key)
         return super().__getitem__(key)
 
-    def __setitem__(self, key: str, value: Union[bool, int, bytes, str, Address, MutableMapping]):
+    def __setitem__(self, key: str, value):
         _check_key_type(key)
         _check_value_type(value)
 

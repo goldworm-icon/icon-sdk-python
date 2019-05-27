@@ -18,7 +18,7 @@ from time import time
 from iconsdk.builder.call_builder import CallBuilder
 from iconsdk.builder.transaction_builder import TransactionBuilder
 from iconsdk.exception import JSONRPCException
-from iconsdk.icon_service import IconService
+from iconsdk.icon_client import IconClient
 from iconsdk.providers.http_provider import HTTPProvider
 from iconsdk.signed_transaction import SignedTransaction
 from iconsdk.utils.convert_type import convert_hex_str_to_int
@@ -36,7 +36,7 @@ print("[wallet1] address: ", wallet1.get_address(), " private key: ", wallet1.ge
 wallet2 = KeyWallet.create()
 print("[wallet2] address: ", wallet2.get_address(), " private key: ", wallet2.get_private_key())
 
-icon_service = IconService(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
+icon_service = IconClient(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
 
 
 # Returns a step cost. You can use it for getting the recommended value of 'step limit'.

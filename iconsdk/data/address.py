@@ -19,6 +19,8 @@
 
 from enum import IntEnum
 
+from .object import Object
+
 _EOA_PREFIX = "hx"
 _CONTRACT_PREFIX = "cx"
 
@@ -59,7 +61,7 @@ class AddressPrefix(IntEnum):
         raise ValueError(f"Invalid prefix: {prefix}")
 
 
-class Address(object):
+class Address(Object):
     """Address class
     """
 

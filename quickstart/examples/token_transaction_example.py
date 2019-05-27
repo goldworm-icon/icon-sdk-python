@@ -17,7 +17,7 @@ from pprint import pprint
 from iconsdk.builder.call_builder import CallBuilder
 from iconsdk.builder.transaction_builder import CallTransactionBuilder
 from iconsdk.exception import JSONRPCException
-from iconsdk.icon_service import IconService
+from iconsdk.icon_client import IconClient
 from iconsdk.providers.http_provider import HTTPProvider
 from iconsdk.signed_transaction import SignedTransaction
 from iconsdk.utils.convert_type import convert_hex_str_to_int
@@ -43,7 +43,7 @@ def get_default_step_cost():
     return default_step_cost
 
 
-icon_service = IconService(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
+icon_service = IconClient(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
 
 wallet1 = KeyWallet.load(TEST_PRIVATE_KEY)
 

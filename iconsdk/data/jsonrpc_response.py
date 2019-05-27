@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 ICON Foundation
+
+# Copyright 2019 ICON Foundation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# integrate test
-TEST_HTTP_ENDPOINT_URI_V3 = "http://localhost:9000/api/v3"
-TEST_PRIVATE_KEY = bytes.fromhex("592eb276d534e2c41a2d9356c0ab262dc233d87e4dd71ce705ec130a8d27ff0c")
+
+class JsonRpcResponse(object):
+    def __init__(self):
+        pass

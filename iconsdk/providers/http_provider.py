@@ -147,3 +147,10 @@ class HTTPProvider(Provider):
             return False
         else:
             return True
+
+    def post(url: str, data: bytes, **kwargs):
+
+        kwargs.setdefault('timeout', 10)
+        with requests.Session() as session:
+            response = session.post(url=url, data=data, **kwargs)
+        return json.loads(response.content)

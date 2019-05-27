@@ -13,25 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from unittest import TestCase, main
-from iconsdk.icon_service import IconService
-from iconsdk.providers.http_provider import HTTPProvider
-from tests.example_config import TEST_HTTP_ENDPOINT_URI_V3
+from .providers.provider import Provider
+from .data.jsonrpc_request import JsonRpcRequest
+from .data.jsonrpc_response import JsonRpcResponse
+from .data.transaction_result import TransactionResult
 
 
-class TestGetTotalSupply(TestCase):
+class IconClient(object):
+    """
+    The IconService class contains a set of API methods.
+    It accepts a HTTPProvider which serves the purpose of 
+    connecting to HTTP and HTTPS based JSON-RPC servers.
+    """
 
-    @classmethod
-    def setUpClass(cls):
-        cls.icon_service = IconService(HTTPProvider(TEST_HTTP_ENDPOINT_URI_V3))
+    def __init__(self, provider: Provider):
+        self.__provider = provider
 
-    def test_get_total_supply(self):
-        # case 0: when calling the method successfully
-        result = self.icon_service.get_total_supply()
-        self.assertTrue(isinstance(result, int))
-
-
-if __name__ == "__main__":
-    main()
-
-
+    def send(self, request: JsonRpcRequest) -> JsonRpcResponse:
+        pass

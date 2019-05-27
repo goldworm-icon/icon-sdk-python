@@ -15,11 +15,14 @@
 
 from abc import ABCMeta, abstractmethod
 
+from ..data.jsonrpc_request import JsonRpcRequest
+from ..data.jsonrpc_response import JsonRpcResponse
+
 
 class Provider(metaclass=ABCMeta):
     """The provider defines how the IconService connects to Loopchain."""
     @abstractmethod
-    def make_request(self, method, params=None):
+    def send(self, request: JsonRpcRequest) -> JsonRpcResponse:
         raise NotImplementedError("Providers must implement this method")
 
     @abstractmethod
